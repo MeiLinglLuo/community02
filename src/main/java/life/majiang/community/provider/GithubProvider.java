@@ -39,12 +39,10 @@ public class GithubProvider {
 
         OkHttpClient client = new OkHttpClient();
         Request request = new Request.Builder().url("https://api.github.com/user?access_token="+accessToken).build();
-        System.out.println(request);
         try {
             Response response = client.newCall(request).execute();
-            System.out.println(response);
             String string = response.body().string();
-            System.out.println(string);
+
             GithubUser githubUser = JSON.parseObject(string,GithubUser.class);
             return githubUser;
 
